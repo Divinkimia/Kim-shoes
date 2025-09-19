@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Utilisateurs{% endblock %}
+
+{% block body %}
+{#<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello {{ controller_name }}! ✅</h1>
+
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code>C:/Users/dkimpolokimia/e-commerce/src/Controller/UserController.php</code></li>
+        <li>Your template at <code>C:/Users/dkimpolokimia/e-commerce/templates/user/index.html.twig</code></li>
+    </ul>
+</div> 
+ancien code #}
+
+<div class="container">
+    <br>
+    <h1> utilisateurs </h1>
+    <br>
+    {% include 'layouts/_flash_message.html.twig' %}
+    <table class="table">
+        <tr>
+            <th>id</th>
+            <th>email</th>
+            <th>nom</th>
+            <th>prénom</th>
+            <th>roles</th>
+            <th>actions</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{user.id}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.firstName}}</td>
+            <td>{{user.lastName}}</td>
+            <td>
+                {% if ("ROLE_ADMIN" in user.roles) %}
+                    <span class="text-primairy">administrateur</span>
+                {% elseif ("ROLE_EDITOR".in user.roles)%}
+                    <span class="text-success">editeur</span>
+                {% else %}
+                    <span class="text-secondary">client</span>
+                {% endif %}
+                {#Rajouter #}
+                {% if ("ROLE_ADMIN" in user.roles)== false %}
+                    {% if ("ROLE_EDITOR" in user.roles)== false %}
+                        <a onclinck="return confirm('Voulez-vous vraiment effacer le role éditeur à l\'utlisateur ?')" class= "btn btn-outline-primary" 
+                        href="{{path ('app_user_add_editor_role',{'id':user.id}) }}">Ajouter le role Editeur</a>
+                    {% else %}
+                        <a onclinck="return confirm('Voulez-vous vraiment retire le role éditeur à l\'utlisateur ?')" class= "btn btn btn-danger" 
+                        href="{{path ('app_user_editor_role',{'id':user.id}) }}">Retire le role Editeur</a>
+                    {% endif %}
+                {% endif %}
+            </td>
+        </tr>
+        {% else %}
+        <p> Aucun utilisateur à afficher</p>
+        {% endfor %}
+    </table>
+   
+
+
+
+
+
+
+
+   
+</div>
+
+{% endblock %}
