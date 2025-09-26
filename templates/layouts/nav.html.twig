@@ -10,9 +10,6 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
         {% if is_granted("ROLE_ADMIN") %}
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -20,16 +17,14 @@
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="{{ path('app_category')}}">Catégories</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="{{ path('app_product_new') }}">Sous-catégorie</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{{ path('app_sub_category_new') }}">Getion de produits</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
         {% endif %}
-
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Link</a>
-        </li>
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>

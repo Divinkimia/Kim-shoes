@@ -21,15 +21,15 @@
     <td>{{category.id}}</td>
     <td>{{category.name}}</td>
     <td>
-    <a class="btn-btn-outline-primar" href="{{path('app_category_update',{'id':category.id})}}">Modifier</a>
-    <a onclinck="return confirm('Voulez-vous vraiment supprimer cette catégorie'?)" href="{{path('app_category_delete',{'id':category.id})}}">Supprimer</a>
+    <a class="btn btn-success" href="{{path('app_category_update',{'id':category.id})}}">Modifier</a>
+    <a onclinck="return confirm('Voulez-vous vraiment supprimer cette catégorie'?)" class="btn btn-danger" href="{{path('app_category_delete',{'id':category.id})}}">Supprimer</a>
     </td>
 </tr>
 {% else %}
 <p> Aucune categorie à afficher</p>
 {% endfor %}
 </table>
-<a class="btn btn-outline-sucess" href="{{ path('app_category_new')}}">Nouvelle categorie </a>
+<a class="btn btn-outline-success" href="{{ path('app_category_new')}}">Nouvelle categorie </a>
 </div>
 
     

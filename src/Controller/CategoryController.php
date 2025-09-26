@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
 
+
 final class CategoryController extends AbstractController
 {
     #[Route('/admin/category', name: 'app_category')]
@@ -22,7 +23,8 @@ final class CategoryController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/category', name: 'app_category_new')]
+
+    #[Route('/admin/category/new', name: 'app_category_new')]
     public function addCategory(EntityManagerInterface $entityManager, Request $request): Response
     {
         $category = new Category();
@@ -38,7 +40,7 @@ final class CategoryController extends AbstractController
             $this->addFlash('success','La categorie a été ajouter');
             return $this->redirectToRoute('app_category');
         }
-        return $this->render('category/new.html.twig', ['categoryFrom'=>$form->createView()]);
+        return $this->render('category/new.html.twig', ['categoryForm'=>$form->createView()]);
     }
 
 
@@ -58,12 +60,12 @@ final class CategoryController extends AbstractController
             $this->addFlash('success','La categorie a été ajouter');
             return $this->redirectToRoute('app_category');
         }
-        return $this->render('category/update.html.twig', ['categoryFrom'=>$form->createView()]);
+        return $this->render('category/update.html.twig', ['categoryForm'=>$form->createView()]);
     }
 
 
 
-        #[Route('/admin/category/{id}/delete', name: 'app_category_dalete')]
+    #[Route('/admin/category/{id}/delete', name: 'app_category_delete')]
     public function deleteCategory(Category $category, EntityManagerInterface $entityManager, Request $request): Response
     {
         $entityManager->remove($category);

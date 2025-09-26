@@ -21,7 +21,7 @@ ancien code #}
 
 <div class="container">
     <br>
-    <h1> utilisateurs </h1>
+    <h1> Utilisateurs </h1>
     <br>
     {% include 'layouts/_flash_message.html.twig' %}
     <table class="table">
@@ -57,6 +57,8 @@ ancien code #}
                         href="{{path ('app_user_editor_role',{'id':user.id}) }}">Retire le role Editeur</a>
                     {% endif %}
                 {% endif %}
+                <a onclinck="return confirm('Voulez-vous vraiment supprimer cet utilisateur?')" class= "btn btn-danger" 
+                href="{{ path ('app_user_remove_editor_role',{'id':user.id}) }}"> Supprimer </a>
             </td>
         </tr>
         {% else %}
@@ -65,13 +67,6 @@ ancien code #}
     </table>
    
 
-
-
-
-
-
-
-   
 </div>
 
 {% endblock %}
