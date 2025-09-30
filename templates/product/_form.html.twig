@@ -1,0 +1,27 @@
+{{ form_start(form) }}
+
+    <labe for="">Nom du produit : </label>
+
+    {{ form_widget(form.name, {'attr':{'class':'form form-control','placeholder':"nom"}}) }}
+        {{ form_errors(form.name) }}
+        <br>
+        <labe for="">Description : </label>
+        {{ form_widget(form.description, {'attr':{'class':'form form-control'}}) }}
+        <br>
+        <labe for="">Prix : </label>
+        {{ form_widget(form.price, {'attr':{'class':'form form-control'}}) }}
+        <br>
+
+        {% if button_label is defined and button_label== 'Modifier' %}
+            <labe for="">Stock</label>
+{{ form_widget(form.stock, {'attr':{'class':'form form-control'}}) }}
+
+        <labe for="">Sous-categories : </label>
+        {{ form_widget(form.subCartegories, {'attr':{'class':'form form-control'}}) }}
+        <br>
+        <labe for="">Image : </label>
+        {{ form_widget(form.price, {'attr':{'class':'form form-control'}}) }}
+        <br>
+
+    <button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
+{{ form_end(form) }}

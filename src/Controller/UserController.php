@@ -42,7 +42,7 @@ final class UserController extends AbstractController
     }
 
 
-        #[Route('/admin/user/{id}/delete', name: 'app_user_delete')]
+    #[Route('/admin/user/{id}/delete', name: 'app_user_delete')]
     public function ediorRoleDelete(User $user, EntityManagerInterface $entityManager ): Response
     {
         $entityManager->remove($user);
